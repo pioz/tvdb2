@@ -114,11 +114,11 @@
   <h2>Constant Summary</h2>
   <dl class="constants">
     
-      <dt id="FIELDS-constant" class="">FIELDS =
+      <dt id="INDEX_FIELDS-constant" class="">INDEX_FIELDS =
         <div class="docstring">
   <div class="discussion">
     
-<p>All episode fields returned from TVDB api.</p>
+<p>Fields returned from api endpoint <code>GET /series/{id}/episodes</code></p>
 
 
   </div>
@@ -129,19 +129,963 @@
 </div>
       </dt>
       <dd><pre class="code"><span class='lbracket'>[</span>
-  <span class='symbol'>:absoluteNumber</span><span class='comma'>,</span> <span class='symbol'>:airedEpisodeNumber</span><span class='comma'>,</span> <span class='symbol'>:airedSeason</span><span class='comma'>,</span>
-  <span class='symbol'>:airsAfterSeason</span><span class='comma'>,</span> <span class='symbol'>:airsBeforeEpisode</span><span class='comma'>,</span> <span class='symbol'>:airsBeforeSeason</span><span class='comma'>,</span> <span class='symbol'>:direcotor</span><span class='comma'>,</span>
-  <span class='symbol'>:directors</span><span class='comma'>,</span> <span class='symbol'>:dvdChapter</span><span class='comma'>,</span> <span class='symbol'>:dvdDiscid</span><span class='comma'>,</span> <span class='symbol'>:dvdEpisodeNumber</span><span class='comma'>,</span> <span class='symbol'>:dvdSeason</span><span class='comma'>,</span>
-  <span class='symbol'>:episodeName</span><span class='comma'>,</span> <span class='symbol'>:filename</span><span class='comma'>,</span> <span class='symbol'>:firstAired</span><span class='comma'>,</span> <span class='symbol'>:guestStars</span><span class='comma'>,</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='symbol'>:imdbId</span><span class='comma'>,</span>
-  <span class='symbol'>:lastUpdated</span><span class='comma'>,</span> <span class='symbol'>:lastUpdatedBy</span><span class='comma'>,</span> <span class='symbol'>:overview</span><span class='comma'>,</span> <span class='symbol'>:productionCode</span><span class='comma'>,</span> <span class='symbol'>:seriesId</span><span class='comma'>,</span>
-  <span class='symbol'>:showUrl</span><span class='comma'>,</span> <span class='symbol'>:siteRating</span><span class='comma'>,</span> <span class='symbol'>:siteRatingCount</span><span class='comma'>,</span> <span class='symbol'>:thumbAdded</span><span class='comma'>,</span> <span class='symbol'>:thumbAuthor</span><span class='comma'>,</span>
-  <span class='symbol'>:thumbHeight</span><span class='comma'>,</span> <span class='symbol'>:thumbWidth</span><span class='comma'>,</span> <span class='symbol'>:writers</span><span class='comma'>,</span> <span class='symbol'>:errors</span>
+  <span class='symbol'>:absoluteNumber</span><span class='comma'>,</span> <span class='symbol'>:airedEpisodeNumber</span><span class='comma'>,</span> <span class='symbol'>:airedSeason</span><span class='comma'>,</span><span class='symbol'>:dvdEpisodeNumber</span><span class='comma'>,</span>
+  <span class='symbol'>:dvdSeason</span><span class='comma'>,</span> <span class='symbol'>:episodeName</span><span class='comma'>,</span> <span class='symbol'>:firstAired</span><span class='comma'>,</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='symbol'>:lastUpdated</span><span class='comma'>,</span> <span class='symbol'>:overview</span>
 <span class='rbracket'>]</span></pre></dd>
+    
+      <dt id="SHOW_FIELDS-constant" class="">SHOW_FIELDS =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Other fields with <span class='object_link'><a href="#INDEX_FIELDS-constant" title="Tvdb2::Episode::INDEX_FIELDS (constant)">INDEX_FIELDS</a></span> returned from api endpoint <code>GET
+/episodes/{id}</code></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='lbracket'>[</span>
+  <span class='symbol'>:airsAfterSeason</span><span class='comma'>,</span> <span class='symbol'>:airsBeforeEpisode</span><span class='comma'>,</span> <span class='symbol'>:airsBeforeSeason</span><span class='comma'>,</span> <span class='symbol'>:direcotor</span><span class='comma'>,</span>
+  <span class='symbol'>:directors</span><span class='comma'>,</span> <span class='symbol'>:dvdChapter</span><span class='comma'>,</span> <span class='symbol'>:dvdDiscid</span><span class='comma'>,</span> <span class='symbol'>:filename</span><span class='comma'>,</span> <span class='symbol'>:guestStars</span><span class='comma'>,</span> <span class='symbol'>:imdbId</span><span class='comma'>,</span>
+  <span class='symbol'>:lastUpdatedBy</span><span class='comma'>,</span> <span class='symbol'>:productionCode</span><span class='comma'>,</span> <span class='symbol'>:seriesId</span><span class='comma'>,</span> <span class='symbol'>:showUrl</span><span class='comma'>,</span> <span class='symbol'>:siteRating</span><span class='comma'>,</span>
+  <span class='symbol'>:siteRatingCount</span><span class='comma'>,</span> <span class='symbol'>:thumbAdded</span><span class='comma'>,</span> <span class='symbol'>:thumbAuthor</span><span class='comma'>,</span> <span class='symbol'>:thumbHeight</span><span class='comma'>,</span> <span class='symbol'>:thumbWidth</span><span class='comma'>,</span>
+  <span class='symbol'>:writers</span>
+<span class='rbracket'>]</span></pre></dd>
+    
+      <dt id="FIELDS-constant" class="">FIELDS =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>All possible data fields returned from api for a series.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='const'><span class='object_link'><a href="#INDEX_FIELDS-constant" title="Tvdb2::Episode::INDEX_FIELDS (constant)">INDEX_FIELDS</a></span></span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#SHOW_FIELDS-constant" title="Tvdb2::Episode::SHOW_FIELDS (constant)">SHOW_FIELDS</a></span></span></pre></dd>
     
   </dl>
 
 
 
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#absoluteNumber-instance_method" title="#absoluteNumber (instance method)">#<strong>absoluteNumber</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute absoluteNumber.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#airedEpisodeNumber-instance_method" title="#airedEpisodeNumber (instance method)">#<strong>airedEpisodeNumber</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: #number)
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute airedEpisodeNumber.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#airedSeason-instance_method" title="#airedSeason (instance method)">#<strong>airedSeason</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: #seasonNumber)
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute airedSeason.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#airsAfterSeason-instance_method" title="#airsAfterSeason (instance method)">#<strong>airsAfterSeason</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute airsAfterSeason.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#airsBeforeEpisode-instance_method" title="#airsBeforeEpisode (instance method)">#<strong>airsBeforeEpisode</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute airsBeforeEpisode.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#airsBeforeSeason-instance_method" title="#airsBeforeSeason (instance method)">#<strong>airsBeforeSeason</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute airsBeforeSeason.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#direcotor-instance_method" title="#direcotor (instance method)">#<strong>direcotor</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute direcotor.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#directors-instance_method" title="#directors (instance method)">#<strong>directors</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute directors.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dvdChapter-instance_method" title="#dvdChapter (instance method)">#<strong>dvdChapter</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute dvdChapter.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dvdDiscid-instance_method" title="#dvdDiscid (instance method)">#<strong>dvdDiscid</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute dvdDiscid.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dvdEpisodeNumber-instance_method" title="#dvdEpisodeNumber (instance method)">#<strong>dvdEpisodeNumber</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute dvdEpisodeNumber.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dvdSeason-instance_method" title="#dvdSeason (instance method)">#<strong>dvdSeason</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute dvdSeason.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#episodeName-instance_method" title="#episodeName (instance method)">#<strong>episodeName</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: #name)
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute episodeName.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filename-instance_method" title="#filename (instance method)">#<strong>filename</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute filename.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#firstAired-instance_method" title="#firstAired (instance method)">#<strong>firstAired</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute firstAired.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#guestStars-instance_method" title="#guestStars (instance method)">#<strong>guestStars</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute guestStars.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">#<strong>id</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute id.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#imdbId-instance_method" title="#imdbId (instance method)">#<strong>imdbId</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute imdbId.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lastUpdated-instance_method" title="#lastUpdated (instance method)">#<strong>lastUpdated</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute lastUpdated.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lastUpdatedBy-instance_method" title="#lastUpdatedBy (instance method)">#<strong>lastUpdatedBy</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute lastUpdatedBy.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#overview-instance_method" title="#overview (instance method)">#<strong>overview</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute overview.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#productionCode-instance_method" title="#productionCode (instance method)">#<strong>productionCode</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute productionCode.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#seriesId-instance_method" title="#seriesId (instance method)">#<strong>seriesId</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute seriesId.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#showUrl-instance_method" title="#showUrl (instance method)">#<strong>showUrl</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute showUrl.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#siteRating-instance_method" title="#siteRating (instance method)">#<strong>siteRating</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute siteRating.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#siteRatingCount-instance_method" title="#siteRatingCount (instance method)">#<strong>siteRatingCount</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute siteRatingCount.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#thumbAdded-instance_method" title="#thumbAdded (instance method)">#<strong>thumbAdded</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute thumbAdded.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#thumbAuthor-instance_method" title="#thumbAuthor (instance method)">#<strong>thumbAuthor</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute thumbAuthor.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#thumbHeight-instance_method" title="#thumbHeight (instance method)">#<strong>thumbHeight</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute thumbHeight.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#thumbWidth-instance_method" title="#thumbWidth (instance method)">#<strong>thumbWidth</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute thumbWidth.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writers-instance_method" title="#writers (instance method)">#<strong>writers</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute writers.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -157,33 +1101,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#episode!-instance_method" title="#episode! (instance method)">#<strong>episode!</strong>  &#x21d2; Episode </a>
-    
-
-    
-      (also: #get_data!)
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Get all data for this episode.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(tvdb, data = {})  &#x21d2; Episode </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(client, data = {})  &#x21d2; Episode </a>
     
 
     
@@ -240,7 +1158,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(tvdb, data = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Tvdb2::Episode (class)">Episode</a></span></tt> 
+    #<strong>initialize</strong>(client, data = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Tvdb2::Episode (class)">Episode</a></span></tt> 
   
 
   
@@ -252,12 +1170,13 @@
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
-<p>The Episode object may not have all fields filled because it can be
-initialized from not completed data like when is build from a call like
-<code>series.episodes</code> (<code>GET /series/{id}/episodes</code>): in
-this case the api call return a subset of all avaiable data for the
-episodes. To get the complete data of a specific episode use
-<code>#episode!</code> method.</p>
+<p>The <span class='object_link'><a href="" title="Tvdb2::Episode (class)">Tvdb2::Episode</a></span> object may not have all fields filled because it can be
+initialized from not completed data like when is build from the call
+<span class='object_link'><a href="Series.html#episodes-instance_method" title="Tvdb2::Series#episodes (method)">Series#episodes</a></span> (<code>GET /series/{id}/episodes</code>): in this case
+the api call return a subset of all avaiable data for the episodes
+(<span class='object_link'><a href="#INDEX_FIELDS-constant" title="Tvdb2::Episode::INDEX_FIELDS (constant)">INDEX_FIELDS</a></span>). But no warries! When you call a method to get one
+<span class='object_link'><a href="#SHOW_FIELDS-constant" title="Tvdb2::Episode::SHOW_FIELDS (constant)">SHOW_FIELDS</a></span> the library automatically call the endpoint <code>GET
+/episodes/{id}</code> to retrieve the missing fields.</p>
 </div>
   </div>
 
@@ -280,7 +1199,7 @@ episodes. To get the complete data of a specific episode use
   
     <li>
       
-        <span class='name'>tvdb</span>
+        <span class='name'>client</span>
       
       
         <span class='type'>(<tt><span class='object_link'><a href="Client.html" title="Tvdb2::Client (class)">Client</a></span></tt>)</span>
@@ -321,21 +1240,23 @@ episodes. To get the complete data of a specific episode use
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37</pre>
+68
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 68</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_tvdb'>tvdb</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@tvdb</span> <span class='op'>=</span> <span class='id identifier rubyid_tvdb'>tvdb</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@client</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span>
   <span class='const'><span class='object_link'><a href="#FIELDS-constant" title="Tvdb2::Episode::FIELDS (constant)">FIELDS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
     <span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+  <span class='ivar'>@completed</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='ivar'>@client</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>seriesId</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -344,66 +1265,30 @@ episodes. To get the complete data of a specific episode use
   
 </div>
 
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
     
+      
+      <span id=""></span>
       <div class="method_details first">
-  <h3 class="signature first" id="episode!-instance_method">
+  <h3 class="signature first" id="absoluteNumber-instance_method">
   
-    #<strong>episode!</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Tvdb2::Episode (class)">Episode</a></span></tt> 
+    #<strong>absoluteNumber</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
-  
-    <span class="aliases">Also known as:
-    <span class="names"><span id='get_data!-instance_method'>get_data!</span></span>
-    </span>
   
 
   
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Get all data for this episode. Calling api endpoint <code>GET
-/episodes/{id}</code>.</p>
+<p>Returns the value of attribute absoluteNumber</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Tvdb2::Episode (class)">Episode</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>the episode object with all fields filled from the api response.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="RequestError.html" title="Tvdb2::RequestError (class)">RequestError</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -411,35 +1296,1332 @@ episodes. To get the complete data of a specific episode use
       <pre class="lines">
 
 
-44
-45
-46
-47
-48
-49
-50
-51
-52</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_episode!'>episode!</span>
-  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_lastUpdated'>lastUpdated</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_e'>e</span> <span class='op'>=</span> <span class='ivar'>@tvdb</span><span class='period'>.</span><span class='id identifier rubyid_episode'>episode</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="#FIELDS-constant" title="Tvdb2::Episode::FIELDS (constant)">FIELDS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
-      <span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_field'>field</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_absoluteNumber'>absoluteNumber</span>
+  <span class='ivar'>@absoluteNumber</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
+      
+      <span id=""></span>
       <div class="method_details ">
-  <h3 class="signature " id="x-instance_method">
+  <h3 class="signature " id="airedEpisodeNumber-instance_method">
+  
+    #<strong>airedEpisodeNumber</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='number-instance_method'>number</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute airedEpisodeNumber</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_airedEpisodeNumber'>airedEpisodeNumber</span>
+  <span class='ivar'>@airedEpisodeNumber</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="airedSeason-instance_method">
+  
+    #<strong>airedSeason</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='seasonNumber-instance_method'>seasonNumber</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute airedSeason</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_airedSeason'>airedSeason</span>
+  <span class='ivar'>@airedSeason</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="airsAfterSeason-instance_method">
+  
+    #<strong>airsAfterSeason</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute airsAfterSeason</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_airsAfterSeason'>airsAfterSeason</span>
+  <span class='ivar'>@airsAfterSeason</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="airsBeforeEpisode-instance_method">
+  
+    #<strong>airsBeforeEpisode</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute airsBeforeEpisode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_airsBeforeEpisode'>airsBeforeEpisode</span>
+  <span class='ivar'>@airsBeforeEpisode</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="airsBeforeSeason-instance_method">
+  
+    #<strong>airsBeforeSeason</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute airsBeforeSeason</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_airsBeforeSeason'>airsBeforeSeason</span>
+  <span class='ivar'>@airsBeforeSeason</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="direcotor-instance_method">
+  
+    #<strong>direcotor</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute direcotor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_direcotor'>direcotor</span>
+  <span class='ivar'>@direcotor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="directors-instance_method">
+  
+    #<strong>directors</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute directors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_directors'>directors</span>
+  <span class='ivar'>@directors</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dvdChapter-instance_method">
+  
+    #<strong>dvdChapter</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute dvdChapter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dvdChapter'>dvdChapter</span>
+  <span class='ivar'>@dvdChapter</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dvdDiscid-instance_method">
+  
+    #<strong>dvdDiscid</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute dvdDiscid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dvdDiscid'>dvdDiscid</span>
+  <span class='ivar'>@dvdDiscid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dvdEpisodeNumber-instance_method">
+  
+    #<strong>dvdEpisodeNumber</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute dvdEpisodeNumber</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dvdEpisodeNumber'>dvdEpisodeNumber</span>
+  <span class='ivar'>@dvdEpisodeNumber</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dvdSeason-instance_method">
+  
+    #<strong>dvdSeason</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute dvdSeason</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dvdSeason'>dvdSeason</span>
+  <span class='ivar'>@dvdSeason</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="episodeName-instance_method">
+  
+    #<strong>episodeName</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='name-instance_method'>name</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute episodeName</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_episodeName'>episodeName</span>
+  <span class='ivar'>@episodeName</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="filename-instance_method">
+  
+    #<strong>filename</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute filename</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filename'>filename</span>
+  <span class='ivar'>@filename</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="firstAired-instance_method">
+  
+    #<strong>firstAired</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute firstAired</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_firstAired'>firstAired</span>
+  <span class='ivar'>@firstAired</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="guestStars-instance_method">
+  
+    #<strong>guestStars</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute guestStars</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_guestStars'>guestStars</span>
+  <span class='ivar'>@guestStars</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    #<strong>id</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="imdbId-instance_method">
+  
+    #<strong>imdbId</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute imdbId</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_imdbId'>imdbId</span>
+  <span class='ivar'>@imdbId</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="lastUpdated-instance_method">
+  
+    #<strong>lastUpdated</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute lastUpdated</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lastUpdated'>lastUpdated</span>
+  <span class='ivar'>@lastUpdated</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="lastUpdatedBy-instance_method">
+  
+    #<strong>lastUpdatedBy</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute lastUpdatedBy</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lastUpdatedBy'>lastUpdatedBy</span>
+  <span class='ivar'>@lastUpdatedBy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="overview-instance_method">
+  
+    #<strong>overview</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute overview</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_overview'>overview</span>
+  <span class='ivar'>@overview</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="productionCode-instance_method">
+  
+    #<strong>productionCode</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute productionCode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_productionCode'>productionCode</span>
+  <span class='ivar'>@productionCode</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="seriesId-instance_method">
+  
+    #<strong>seriesId</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute seriesId</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_seriesId'>seriesId</span>
+  <span class='ivar'>@seriesId</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="showUrl-instance_method">
+  
+    #<strong>showUrl</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute showUrl</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_showUrl'>showUrl</span>
+  <span class='ivar'>@showUrl</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="siteRating-instance_method">
+  
+    #<strong>siteRating</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute siteRating</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_siteRating'>siteRating</span>
+  <span class='ivar'>@siteRating</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="siteRatingCount-instance_method">
+  
+    #<strong>siteRatingCount</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute siteRatingCount</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_siteRatingCount'>siteRatingCount</span>
+  <span class='ivar'>@siteRatingCount</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="thumbAdded-instance_method">
+  
+    #<strong>thumbAdded</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute thumbAdded</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_thumbAdded'>thumbAdded</span>
+  <span class='ivar'>@thumbAdded</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="thumbAuthor-instance_method">
+  
+    #<strong>thumbAuthor</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute thumbAuthor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_thumbAuthor'>thumbAuthor</span>
+  <span class='ivar'>@thumbAuthor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="thumbHeight-instance_method">
+  
+    #<strong>thumbHeight</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute thumbHeight</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_thumbHeight'>thumbHeight</span>
+  <span class='ivar'>@thumbHeight</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="thumbWidth-instance_method">
+  
+    #<strong>thumbWidth</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute thumbWidth</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_thumbWidth'>thumbWidth</span>
+  <span class='ivar'>@thumbWidth</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="writers-instance_method">
+  
+    #<strong>writers</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute writers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writers'>writers</span>
+  <span class='ivar'>@writers</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="x-instance_method">
   
     #<strong>x</strong>  &#x21d2; <tt>String</tt> 
   
@@ -484,12 +2666,12 @@ episodes. To get the complete data of a specific episode use
       <pre class="lines">
 
 
-57
-58
-59</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/episode.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_x'>x</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_airedSeason'>airedSeason</span><span class='embexpr_end'>}</span><span class='tstring_content'>x</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_airedEpisodeNumber'>airedEpisodeNumber</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -504,7 +2686,7 @@ episodes. To get the complete data of a specific episode use
 </div>
 
       <div id="footer">
-  Generated on Fri Aug  4 18:20:11 2017 by
+  Generated on Mon Aug  7 10:11:05 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.1).
 </div>

@@ -216,7 +216,7 @@ retrieved from api.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(apikey: &#39;6F6E61197C18C895&#39;, language: nil)  &#x21d2; Client </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(apikey:, language: &#39;en&#39;)  &#x21d2; Client </a>
     
 
     
@@ -309,7 +309,7 @@ retrieved from api.</p>
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(apikey: &#39;6F6E61197C18C895&#39;, language: nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Tvdb2::Client (class)">Client</a></span></tt> 
+    #<strong>initialize</strong>(apikey:, language: &#39;en&#39;)  &#x21d2; <tt><span class='object_link'><a href="" title="Tvdb2::Client (class)">Client</a></span></tt> 
   
 
   
@@ -394,7 +394,7 @@ Default is <code>nil</code> that is <code>EN</code>.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/tvdb2/client.rb', line 42</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>apikey:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>6F6E61197C18C895</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>language:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>apikey:</span><span class='comma'>,</span> <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@language</span> <span class='op'>=</span> <span class='id identifier rubyid_language'>language</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>apikey:</span> <span class='id identifier rubyid_apikey'>apikey</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="RequestError.html" title="Tvdb2::RequestError (class)">RequestError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="RequestError.html#initialize-instance_method" title="Tvdb2::RequestError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>!=</span> <span class='int'>200</span>
@@ -549,12 +549,12 @@ retrieved from api.</p>
       <pre class="lines">
 
 
+91
 92
-93
-94</pre>
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tvdb2/client.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/client.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_image_url'>image_url</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='const'>URI</span><span class='op'>::</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https://thetvdb.com/banners/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -672,12 +672,11 @@ retrieved from api.</p>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_got'>got</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_best_search'>best_search</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Game of Thrones</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_ep'>ep</span> <span class='op'>=</span> <span class='id identifier rubyid_got'>got</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3x9</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_with_language'>with_language</span><span class='lparen'>(</span><span class='symbol'>:it</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-  <span class='id identifier rubyid_ep'>ep</span> <span class='op'>=</span> <span class='id identifier rubyid_got'>got</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1x1</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='comment'># Get episode data in italian
-</span>  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>    <span class='comment'># print the title of episode 1x1 in italian
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'># print the title of episode 3x9 in italian
 </span><span class='kw'>end</span>
-<span class='id identifier rubyid_ep'>ep</span> <span class='op'>=</span> <span class='id identifier rubyid_got'>got</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1x1</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>   <span class='comment'># Get episode data in default language
-</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>      <span class='comment'># print the title of episode 1x1 in english</span></code></pre>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>   <span class='comment'># print the title of episode 3x9 in english</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -726,15 +725,15 @@ retrieved from api.</p>
       <pre class="lines">
 
 
+71
 72
 73
 74
 75
-76
-77</pre>
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tvdb2/client.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/tvdb2/client.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_with_language'>with_language</span><span class='lparen'>(</span><span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tmp_language'>tmp_language</span> <span class='op'>=</span> <span class='ivar'>@language</span>
@@ -752,7 +751,7 @@ retrieved from api.</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Aug  4 18:20:10 2017 by
+  Generated on Mon Aug  7 10:11:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.1).
 </div>
