@@ -89,6 +89,7 @@ module Tvdb2
         hash[field.to_sym] = instance_variable_get("@#{field}")
       end
       hash[:name] = @episodeName
+      hash[:x] = self.x
       return hash
     end
 
