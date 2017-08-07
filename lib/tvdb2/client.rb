@@ -39,7 +39,7 @@ module Tvdb2
     #   https://thetvdb.com/?tab=apiregister). Required.
     # @param [Symbol, String] language the language in which you want get data.
     #   You can change later. Optional. Default is `nil` that is `EN`.
-    def initialize(apikey:, language: nil)
+    def initialize(apikey:, language: 'en')
       @language = language
       response = post('/login', apikey: apikey)
       raise RequestError.new(response) if response.code != 200
@@ -60,12 +60,11 @@ module Tvdb2
     #
     # @example
     #   got = client.best_search('Game of Thrones')
+    #   ep = got['3x9']
     #   client.with_language(:it) do |c|
-    #     ep = got['1x1'] # Get episode data in italian
-    #     puts ep.name    # print the title of episode 1x1 in italian
+    #     puts ep.name # print the title of episode 3x9 in italian
     #   end
-    #   ep = got['1x1']   # Get episode data in default language
-    #   puts ep.name      # print the title of episode 1x1 in english
+    #   puts ep.name   # print the title of episode 3x9 in english
     #
     # @param [Symbol, String] locale the language in which you want get data.
     # @yield block called with the selected language.
@@ -98,12 +97,14 @@ module Tvdb2
     # :nodoc:
     # language param is required to invalidate memoist cache on different language
     def get(path, params = {}, language = @language)
+      puts ">>> GET API REQUEST to '#{path}' with language '#{language}'" if ENV['DEBUG']
       self.class.get(URI.escape(path), headers: build_headers, query: params)
     end
     memoize :get
 
     # :nodoc:
     def post(path, params = {}, language = @language)
+      puts ">>> POST API REQUEST to '#{path}' with language '#{language}'" if ENV['DEBUG']
       self.class.post(URI.escape(path), headers: build_headers, body: params.to_json)
     end
     memoize :post
@@ -147,5 +148,5 @@ module Tvdb2
   end
 end
 
-# Alias of {Client}
+# Alias of {Tvdb2::Client}
 TVDB = Tvdb2::Client

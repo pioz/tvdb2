@@ -89,13 +89,13 @@ images = got.season_images(season: 2)
 puts images.first.url
 
 # Switch language
+ep = got['3x9']
 client.language = 'it'
-ep = got['3x9'] # retrieve the episodes with the new language
-puts ep.name
+puts ep.name           # print episode title in italian
 client.language = 'en'
+puts ep.name           # print episode title in english
 # or you can swith language only in a block
 client.with_language(:it) do
-  ep = got['3x9']
   puts ep.name
 end
 ```
