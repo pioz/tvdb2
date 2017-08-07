@@ -79,6 +79,19 @@ module Tvdb2
       "#{self.airedSeason}x#{self.airedEpisodeNumber}"
     end
 
+    # @param [Boolean] retrieve_all_fields if true retrieve all fields
+    #   (from api) of the episode.
+    # @return [Hash] the episode to hash.
+    def to_h(retrieve_all_fields: false)
+      get_all_fields! if retrieve_all_fields
+      hash = {}
+      FIELDS.each do |field|
+        hash[field.to_sym] = instance_variable_get("@#{field}")
+      end
+      hash[:name] = @episodeName
+      return hash
+    end
+
     private
 
     # Get all data fields for this episode. Calling api endpoint `GET
