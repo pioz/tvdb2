@@ -6,7 +6,7 @@ module Tvdb2
     # Fields returned from api endpoint `GET /search/series` (search)
     INDEX_FIELDS = [
       :aliases, :banner, :firstAired, :id, :network, :overview, :seriesName,
-      :status, :slug
+      :slug, :status
     ]
 
     # Other fields with {INDEX_FIELDS} returned from api endpoint `GET
@@ -23,7 +23,7 @@ module Tvdb2
     attr_reader :added, :airsDayOfWeek, :airsTime, :aliases, :banner,
       :firstAired, :genre, :id, :imdbId, :lastUpdated, :network, :networkId,
       :overview, :rating, :runtime, :seriesId, :seriesName, :siteRating,
-      :siteRatingCount, :status, :slug, :zap2itId
+      :siteRatingCount, :slug, :status, :zap2itId
     # FIELDS.each do |field|
     #   attr_reader field
     # end
