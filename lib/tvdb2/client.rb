@@ -98,14 +98,14 @@ module Tvdb2
     # language param is required to invalidate memoist cache on different language
     def get(path, params = {}, language = @language)
       puts ">>> GET API REQUEST to '#{path}' with language '#{language}'" if ENV['DEBUG']
-      self.class.get(URI.escape(path), headers: build_headers, query: params)
+      self.class.get(path, headers: build_headers, query: params)
     end
     memoize :get
 
     # :nodoc:
     def post(path, params = {}, language = @language)
       puts ">>> POST API REQUEST to '#{path}' with language '#{language}'" if ENV['DEBUG']
-      self.class.post(URI.escape(path), headers: build_headers, body: params.to_json)
+      self.class.post(path, headers: build_headers, body: params.to_json)
     end
     memoize :post
 
