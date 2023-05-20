@@ -131,7 +131,7 @@ module Tvdb2
     # :nodoc:
     def build_array_result(path, params = {}, klass = TvdbStruct)
       build_result(path, params, []) do |data|
-        data.map{|x| klass.new(self, x)}
+        Array(data).map{|x| klass.new(self, x)}
       end
     end
 
